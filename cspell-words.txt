@@ -1,0 +1,22 @@
+# CSpell Custom Dictionary Words
+aggfunc
+autoflake
+autoupdate
+DataFrame
+isort
+Menke
+noqa
+dropna
+entorb
+fillna
+iloc
+isna
+notna
+Pandas
+pycache
+pyenv
+pytest
+ruzv
+Streamlit
+Torben
+venv
