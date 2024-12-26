@@ -1,0 +1,12 @@
+# python
+__pycache__/
+.coverage
+.DS_Store
+.venv/
+.vscode/
+.pytest_cache/
+coverage_report/
+playground.py
+
+# project
+cache/
