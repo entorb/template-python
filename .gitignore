@@ -1,11 +1,12 @@
 # python
 __pycache__/
-.coverage
 .DS_Store
 .venv/
 .vscode/
 .pytest_cache/
-coverage_report/
+# coverage reports
+.coverage
+htmlcov/
 coverage.xml
 
 # project

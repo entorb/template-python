@@ -2,6 +2,15 @@
 
 Based on <https://github.com/entorb/pre-commit-config>
 
+## Unit Tests
+
+```sh
+# for console output
+pytest --cov
+# for html output in htmlcov/ dir
+pytest --cov --cov-report=html
+```
+
 ## SonarQube
 
 Report is here: <https://sonarcloud.io/project/overview?id=entorb_template-python>

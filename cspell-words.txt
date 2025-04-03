@@ -9,6 +9,7 @@ noqa
 dropna
 entorb
 fillna
+htmlcov
 iloc
 isna
 notna
