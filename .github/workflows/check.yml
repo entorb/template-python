@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           persist-credentials: false
-          fetch-depth: 1 # 0 if you want to push to repo
+          fetch-depth: 0 # for SonarQuve
 
       - name: Python set up
         uses: actions/setup-python@v5
@@ -35,7 +35,13 @@ jobs:
 
       - name: Run pytest unittests
         run: |
-          pytest
+          pytest --cov --cov-report=xml:coverage.xml
 
       - name: Run pre-commit hooks
         uses: pre-commit/action@v3.0.1
+
+      # for SonarQube Coverage report
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v4
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

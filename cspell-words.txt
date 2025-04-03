@@ -17,6 +17,8 @@ pycache
 pyenv
 pytest
 ruzv
+SonarCloud
+SonarQube
 Streamlit
 Torben
 venv
