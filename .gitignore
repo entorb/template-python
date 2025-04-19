@@ -2,7 +2,6 @@
 __pycache__/
 .DS_Store
 .venv/
-.vscode/
 .pytest_cache/
 # coverage reports
 .coverage
