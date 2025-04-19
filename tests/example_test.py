@@ -2,12 +2,8 @@
 
 # ruff: noqa: S101 D103 PLR2004 INP001
 
-import sys
-from pathlib import Path
-
-sys.path.insert(0, (Path(__file__).parent.parent / "src").as_posix())
-
 import datetime as dt
+from pathlib import Path
 
 from example import calc_sum, get_date, read_file
 
