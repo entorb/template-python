@@ -2,6 +2,16 @@
 
 Based on <https://github.com/entorb/pre-commit-config>
 
+## UV package manager
+
+TODO: how to update all packages
+
+```sh
+uv lock --upgrade-package pytest
+# uv lock --upgrade
+uv sync
+```
+
 ## Unit Tests
 
 ```sh
