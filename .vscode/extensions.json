@@ -2,8 +2,13 @@
   "recommendations": [
     "ms-python.python",
     "ms-python.vscode-pylance",
+    "ms-python.debugpy",
     "charliermarsh.ruff",
-    "tamasfe.even-better-toml",
-    "aaron-bond.better-comments"
+    "SonarSource.sonarlint-vscode",
+    "aaron-bond.better-comments",
+    "DavidAnson.vscode-markdownlint",
+    "streetsidesoftware.code-spell-checker-german",
+    "streetsidesoftware.code-spell-checker",
+    "tamasfe.even-better-toml"
   ]
 }
