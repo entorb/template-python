@@ -21,9 +21,9 @@ pytest --cov
 pytest --cov --cov-report=html
 ```
 
-## SonarQube
+## SonarQube Code Analysis
 
-Report is here: <https://sonarcloud.io/project/overview?id=entorb_template-python>
+At [sonarcloud.io](https://sonarcloud.io/summary/overall?id=entorb_template-python&branch=main)
 
 ### Using GitHub Action to scan and provide unit test coverage report
 
