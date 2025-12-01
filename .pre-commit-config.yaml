@@ -62,7 +62,7 @@ repos:
 
   # ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.6
+    rev: v0.14.7
     hooks:
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
@@ -70,7 +70,7 @@ repos:
 
   # security
   - repo: https://github.com/gitleaks/gitleaks
-    rev: v8.29.1
+    rev: v8.30.0
     hooks:
       - id: gitleaks
 
