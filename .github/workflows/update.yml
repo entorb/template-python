@@ -4,6 +4,9 @@ on:
   schedule:
     - cron: "51 5 * * 1" # Every Monday morning
   workflow_dispatch: # Manual trigger
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: write
@@ -13,23 +16,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Checkout repository
         uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
 
       - name: Python set up
         uses: actions/setup-python@v6
         with:
           python-version-file: ".python-version"
-          # pre-commit has its own cache
-          # cache: "pip"
 
-      - name: Install pre-commit
+      - name: Update dev tools
         run: |
-          pip install pre-commit
+          uv remove --dev pre-commit pytest pytest-cov ruff
+          uv add --dev pre-commit pytest pytest-cov ruff
+
+      - name: Run Ruff
+        run: |
+          uv run ruff format
+          uv run ruff check --fix
 
       - name: Run pre-commit autoupdate
         run: |
-          pre-commit autoupdate
+          uv run pre-commit autoupdate
 
       - name: Run pre-commit hooks
         uses: pre-commit/action@v3.0.1
@@ -41,5 +53,9 @@ jobs:
             git config --local user.email "action@github.com"
             git add .pre-commit-config.yaml
             git commit -m "Update .pre-commit-config.yaml" || true
+            git add uv.lock
+            git commit -m "Update Lock" || true
+            git add pyproject.toml
+            git commit -m "Update pyproject.toml" || true
             git push
           fi

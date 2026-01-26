@@ -7,3 +7,11 @@ updates:
       interval: "weekly"
     commit-message:
       prefix: ⬆
+
+  # Python UV
+  - package-ecosystem: "uv"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    commit-message:
+      prefix: ⬆

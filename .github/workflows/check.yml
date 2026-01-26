@@ -35,6 +35,11 @@ jobs:
         with:
           python-version-file: ".python-version"
 
+      - name: Run Ruff
+        run: |
+          uv run ruff format
+          uv run ruff check --fix
+
       - name: Run pytest unittests
         run: |
           uv run --frozen pytest tests/ --cov --cov-report=xml:coverage.xml

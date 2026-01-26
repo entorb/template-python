@@ -6,14 +6,21 @@ cd $(dirname $0)/..
 # exit upon error
 set -e
 
-# uv remove requests
-uv remove --dev ruff pre-commit pytest pytest-cov
+# remove all dependencies
+uv remove tomli_w
+uv remove --dev pre-commit pytest pytest-cov ruff
 
 uv lock --upgrade
 uv sync --upgrade
 
-# uv add requests
-uv add --dev ruff pre-commit pytest pytest-cov
+# to update uv on macos:
+# brew update && brew upgrade uv
+
+uv python upgrade
+
+# re-add all dependencies
+uv add tomli_w
+uv add --dev pre-commit pytest pytest-cov ruff
 
 uv lock --upgrade
 uv sync --upgrade

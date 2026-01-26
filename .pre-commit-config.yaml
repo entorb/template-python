@@ -1,14 +1,14 @@
 # install package
-#  pip3 install pre-commit
+#  uv add --dev install pre-commit
 # register as git commit-hook to run automatically
-#  pre-commit install
+#  uv run pre-commit install
 # run manually
-#  pre-commit run --all-files
+#  uv run pre-commit run --all-files
 # update hooks to latest version
-#  pre-commit autoupdate
+#  uv run pre-commit autoupdate
 
 default_language_version:
-  python: python3.13
+  python: python3.14
 
 exclude: |
   (?x)^(
@@ -62,7 +62,7 @@ repos:
 
   # ruff
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.14.13
+    rev: v0.15.1
     hooks:
       - id: ruff-check
         args: [--fix, --exit-non-zero-on-fix]
@@ -83,6 +83,6 @@ repos:
 
   # code spell check via cspell
   - repo: https://github.com/streetsidesoftware/cspell-cli
-    rev: v9.4.0
+    rev: v9.6.0
     hooks:
       - id: cspell

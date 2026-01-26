@@ -22,5 +22,6 @@ ruzv
 SonarCloud
 SonarQube
 Streamlit
+tomli
 Torben
 venv
