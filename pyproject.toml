@@ -10,4 +10,9 @@ dependencies = []
 pythonpath = "src"
 
 [dependency-groups]
-dev = ["pytest>=8.3.5", "pytest-cov>=6.1.1", "ruff>=0.11.6"]
+dev = [
+    "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.0",
+]
