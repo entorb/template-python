@@ -23,6 +23,9 @@ jobs:
         uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
 
       - name: Python set up
         uses: actions/setup-python@v6
@@ -36,8 +39,8 @@ jobs:
 
       - name: Run Ruff
         run: |
-          uv run ruff format
-          uv run ruff check --fix
+          uv run ruff format --check
+          uv run ruff check --no-fix --output-format=github
 
       - name: Run pre-commit autoupdate
         run: |
@@ -48,14 +51,16 @@ jobs:
 
       - name: Commit changes if any
         run: |
-          if [[ $(git status --porcelain) ]]; then
-            git config --local user.name "GitHub Action"
-            git config --local user.email "action@github.com"
-            git add .pre-commit-config.yaml
-            git commit -m "Update .pre-commit-config.yaml" || true
-            git add uv.lock
-            git commit -m "Update Lock" || true
-            git add pyproject.toml
-            git commit -m "Update pyproject.toml" || true
-            git push
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "No changes to commit"
+            exit 0
           fi
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .pre-commit-config.yaml
+          git diff --staged --quiet || git commit -m "chore: update .pre-commit-config.yaml"
+          git add uv.lock
+          git diff --staged --quiet || git commit -m "chore: update uv.lock"
+          git add pyproject.toml
+          git diff --staged --quiet || git commit -m "chore: update pyproject.toml"
+          git push

@@ -1,13 +1,12 @@
 [project]
 name = "template-python"
 version = "0.1.0"
-description = "Torben's template for Python projects"
+description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = ["tomli-w>=1.2.0"]
-
-[tool.pytest.ini_options]
-pythonpath = "src"
+dependencies = [
+    "tomli-w>=1.2.0",
+]
 
 [dependency-groups]
 dev = [
@@ -16,3 +15,13 @@ dev = [
     "pytest-cov>=7.0.0",
     "ruff>=0.15.1",
 ]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if __name__ == .__main__.:"]
