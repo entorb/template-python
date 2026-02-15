@@ -2,13 +2,17 @@
 Example Python script.
 """
 
-# TODO: add logger
-
 import datetime as dt
+import logging
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import tomli_w
+
+from helper_logging import init_logging
+
+init_logging()
+LOGGER = logging.getLogger(__name__)
 
 TZ_DE = ZoneInfo("Europe/Berlin")
 
@@ -35,7 +39,7 @@ def write_toml_file(path: Path, config: dict) -> None:
         tomli_w.dump(config, fh)
 
 
-def main() -> None:  # noqa: D103
+def main() -> None:  # noqa: D103 pragma: no cover
     print(calc_sum(1, 2.2))
     print(read_file(Path("LICENSE")))
     print(get_date())

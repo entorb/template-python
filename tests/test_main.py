@@ -1,6 +1,6 @@
 """Unit Tests for example.py."""
 
-# ruff: noqa: D103, PLR2004, INP001
+# ruff: noqa: PLR2004, INP001
 
 import datetime as dt
 import tomllib
