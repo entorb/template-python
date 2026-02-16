@@ -16,11 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
+      - uses: actions/checkout@v6
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v7
+      - uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true
           cache-dependency-glob: |
@@ -29,20 +27,21 @@ jobs:
 
       - name: Update dev tools
         run: |
+          uv remove python-dotenv tomli_w
           uv remove --dev pre-commit pytest pytest-cov ruff
+          uv add python-dotenv tomli_w
           uv add --dev pre-commit pytest pytest-cov ruff
 
       - name: Run Ruff
         run: |
-          uv run ruff format --check
           uv run ruff check --no-fix --output-format=github
+          uv run ruff format --check
 
       - name: Run pre-commit autoupdate
         run: |
           uv run pre-commit autoupdate
 
-      - name: Run pre-commit hooks
-        uses: pre-commit/action@v3.0.1
+      - uses: pre-commit/action@v3.0.1
 
       - name: Commit changes if any
         run: |

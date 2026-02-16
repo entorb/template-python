@@ -7,7 +7,7 @@ cd $(dirname $0)/..
 set -e
 
 # remove all dependencies
-uv remove tomli_w
+uv remove python-dotenv tomli_w
 uv remove --dev pre-commit pytest pytest-cov ruff
 
 uv lock --upgrade
@@ -19,15 +19,18 @@ uv sync --upgrade
 uv python upgrade
 
 # re-add all dependencies
-uv add tomli_w
+uv add python-dotenv tomli_w
 uv add --dev pre-commit pytest pytest-cov ruff
 
 uv lock --upgrade
 uv sync --upgrade
 
-uv run pre-commit autoupdate
+# ruff
+uv run ruff check --fix
+uv run ruff format
 
-./scripts/run_ruff.sh
-./scripts/run_pre-commit.sh
+# pre-commit
+uv run pre-commit autoupdate
+uv run pre-commit run --all-files
 
 echo DONE
