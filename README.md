@@ -48,7 +48,8 @@ To disable a certain rule
 
 ## SonarQube Code Analysis
 
-See report at [sonarcloud.io](https://sonarcloud.io/summary/overall?id=entorb_template-python&branch=main)
+- Report at [sonarcloud.io](https://sonarcloud.io/summary/overall?id=entorb_template-python&branch=main)
+- Or per API as [json](https://sonarcloud.io/api/issues/search?componentKeys=entorb_template-python&ps=500)
 
 ### Using GitHub Action to scan and provide unit test coverage report
 
