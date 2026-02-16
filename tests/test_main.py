@@ -1,15 +1,16 @@
 """Unit Tests for example.py."""
 
-# ruff: noqa: D103, PLR2004, INP001
-
 import datetime as dt
 from pathlib import Path
 
-from example import calc_sum, get_date, read_file
+import pytest
+
+from main import calc_sum, get_date, read_file
 
 
-def test_calc_sum() -> None:
-    assert calc_sum(1, 2) == 3
+@pytest.mark.parametrize(("x", "y", "expected"), [(1, 1, 2), (1, 2, 3), (1, 0, 1)])
+def test_calc_sum(x: int, y: float, expected: float) -> None:
+    assert calc_sum(x, y) == expected
 
 
 def test_read_file() -> None:

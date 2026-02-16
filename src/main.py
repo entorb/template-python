@@ -3,8 +3,14 @@ Example Python script.
 """
 
 import datetime as dt
+import logging
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+from helper_logging import init_logging
+
+init_logging()
+LOGGER = logging.getLogger(__name__)
 
 TZ_DE = ZoneInfo("Europe/Berlin")
 
@@ -25,7 +31,11 @@ def get_date() -> dt.date:
     return dt.datetime.now(tz=TZ_DE).date()
 
 
-if __name__ == "__main__":
+def main() -> None:  # noqa: D103 pragma: no cover
     print(calc_sum(1, 2.2))
     print(read_file(Path("LICENSE")))
     print(get_date())
+
+
+if __name__ == "__main__":
+    main()
