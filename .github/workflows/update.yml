@@ -1,0 +1,58 @@
+name: Update
+
+on:
+  schedule:
+    - cron: "51 5 * * 1" # Every Monday morning
+  workflow_dispatch: # Manual trigger
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: astral-sh/setup-uv@v7
+        with:
+          enable-cache: true
+          cache-dependency-glob: |
+            pyproject.toml
+            uv.lock
+
+      - name: Upgrade dependencies
+        run: |
+          uv lock --upgrade
+          uv sync --upgrade
+
+      - name: Run Ruff
+        run: |
+          uv run ruff check --no-fix --output-format=github
+          uv run ruff format --check
+
+      - name: Run pre-commit autoupdate
+        run: |
+          uv run pre-commit autoupdate
+
+      - uses: pre-commit/action@v3.0.1
+
+      - name: Commit changes if any
+        run: |
+          if [[ -z $(git status --porcelain) ]]; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .pre-commit-config.yaml
+          git diff --staged --quiet || git commit -m "chore: update .pre-commit-config.yaml"
+          git add uv.lock
+          git diff --staged --quiet || git commit -m "chore: update uv.lock"
+          git add pyproject.toml
+          git diff --staged --quiet || git commit -m "chore: update pyproject.toml"
+          git push
