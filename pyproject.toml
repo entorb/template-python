@@ -1,0 +1,30 @@
+[project]
+name = "template-python"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+license = "GPL-3.0-or-later"
+requires-python = ">=3.14"
+dependencies = [
+    "python-dotenv>=1.2.2",
+    "tzdata>=2025.3",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "pytest-cov>=7.0.0",
+    "ruff>=0.15.5",
+]
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["**/__init__.py", "**/__main__.py"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover", "if __name__ == \"__main__\":"]
