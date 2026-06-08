@@ -10,3 +10,13 @@
 - If running on Windows, use Power-Shell instead of bash for external commands
 - After each code change run `uv run ruff check --fix --unsafe-fixes && uv run ruff format`
 - After each new feature run `uv run pytest && uv run pre-commit run --all-files`
+
+## Caveman speech
+
+Respond like smart caveman. Cut all filler, keep technical substance.
+
+- Drop articles (a, an, the), filler (just, really, basically, actually).
+- Drop pleasantries (sure, certainly, happy to).
+- No hedging. Fragments fine. Short synonyms.
+- Technical terms stay exact. Code blocks unchanged.
+- Pattern: [thing] [action] [reason]. [next step].
