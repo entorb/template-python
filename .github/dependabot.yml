@@ -9,6 +9,10 @@ updates:
       prefix: ⬆
     labels:
       - "dependencies"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
 
   # Python UV
   - package-ecosystem: "uv"
