@@ -1,0 +1,11 @@
+# CSpell Custom Dictionary Words
+entorb
+htmlcov
+Menke
+SonarCloud
+SonarQube
+Streamlit
+testpaths
+tomli
+Torben
+venv
