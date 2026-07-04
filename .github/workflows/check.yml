@@ -40,12 +40,24 @@ jobs:
           uv run --frozen ruff format --check
           uv run --frozen ruff check --no-fix --output-format=github
 
+      - name: Run vulture (dead code)
+        run: uv run --frozen vulture
+
+      - name: Run package audit
+        run: uv audit --preview-features audit
+
       - name: Run pytest unittests
         run: |
           uv run --frozen pytest \
             --cov \
             --cov-report=term-missing \
             --cov-report=xml:coverage.xml
+
+      - name: Run markdownlint
+        run: npm exec markdownlint-cli2 "**/*.md"
+
+      - name: Run cspell
+        run: npm exec cspell-cli --gitignore --unique --silent .
 
       - name: Cache pre-commit envs
         uses: actions/cache@v6
