@@ -4,42 +4,33 @@
 set -e
 
 # ensure we are in the root dir
-cd "$(dirname "$0")/.."
+SCRIPT_DIR="$(dirname "$0")"
+cd "$SCRIPT_DIR/.."
 
 # # update uv
 # brew update && brew upgrade uv
 
 uv python upgrade "$(cat .python-version)"
 
-extract_from_toml() {
-  uv run python -c "
-import re, tomllib, sys
-keys = sys.argv[1].split('.')
-with open('pyproject.toml', 'rb') as f:
-    data = tomllib.load(f)
-for k in keys:
-    data = data[k]
-names = [re.split(r'[><=!~]+', d)[0].strip() for d in data]
-print(' '.join(names))
-" "$1"
-}
-
-DEPS=$(extract_from_toml "project.dependencies")
-DEV_DEPS=$(extract_from_toml "dependency-groups.dev")
+# extract versions from pyproject.toml
+GEN_OUT=$(uv run python "$SCRIPT_DIR/gen_py_packages_update.py")
+DEP_REM=$(printf '%s\n' "$GEN_OUT" | sed -n 1p)
+DEP_ADD=$(printf '%s\n' "$GEN_OUT" | sed -n 2p)
+DEV_REM=$(printf '%s\n' "$GEN_OUT" | sed -n 3p)
+DEV_ADD=$(printf '%s\n' "$GEN_OUT" | sed -n 4p)
 
 # Disables pathname expansion.
 set -f
 
-# remove all
-[ -n "$DEPS" ] && uv remove $DEPS
-[ -n "$DEV_DEPS" ] && uv remove --dev $DEV_DEPS
+# remove unpinned
+[ -n "$DEP_REM" ] && uv remove $DEP_REM
+[ -n "$DEV_REM" ] && uv remove --dev $DEV_REM
 
 uv sync --upgrade
 
 # Re-add at latest versions
-[ -n "$DEPS" ] && uv add --upgrade $DEPS
-[ -n "$DEV_DEPS" ] && uv add --upgrade --dev $DEV_DEPS
-
+[ -n "$DEP_ADD" ] && uv add $DEP_ADD
+[ -n "$DEV_ADD" ] && uv add --dev $DEV_ADD
 # Restore pathname expansion.
 set +f
 
