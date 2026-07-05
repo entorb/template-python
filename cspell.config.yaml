@@ -16,9 +16,7 @@ dictionaries:
 
 ignorePaths:
   - ".*"
-  - "node_modules/**"
   - "LICENSE"
-  - "cspell.config.yaml"
   - "pyproject.toml"
   - "requirements.txt"
   - "uv.lock"
