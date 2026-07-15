@@ -1,0 +1,58 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "customManagers:biomeVersions"
+  ],
+  "timezone": "Europe/Berlin",
+  "prConcurrentLimit": 5,
+  "assignees": ["entorb"],
+  "labels": ["dependencies"],
+  "commitMessagePrefix": "⬆",
+  "schedule": ["* 0-4 15 * *"],
+  "separateMinorPatch": true,
+  "rangeStrategy": "update-lockfile",
+  "dependencyDashboard": true,
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true,
+    "platformAutomerge": true,
+    "schedule": ["* 0-4 15 * *"]
+  },
+  "vulnerabilityAlerts": {
+    "labels": ["dependencies","security"],
+    "automerge": true,
+    "platformAutomerge": true,
+    "schedule": ["at any time"],
+    "packageRules": [
+      {
+        "matchUpdateTypes": ["major"],
+        "automerge": false
+      }
+    ]
+  },
+  "osvVulnerabilityAlerts": true,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "matchUpdateTypes": ["minor", "major"],
+      "automerge": false
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": true,
+      "platformAutomerge": true
+    },
+    {
+      "groupName": "py-dev",
+      "matchManagers": ["pep621"],
+      "matchDepTypes": ["dependency-groups.dev"],
+      "automerge": true,
+      "platformAutomerge": true
+    }
+  ]
+}
