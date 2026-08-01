@@ -35,6 +35,15 @@ jobs:
         with:
           node-version: 24
 
+      - name: Run prek pre-commit
+        uses: j178/prek-action@v2
+
+      - name: Run markdownlint
+        run: npm exec markdownlint-cli2 "**/*.md"
+
+      - name: Run cspell
+        run: npm exec cspell-cli --gitignore --unique --silent .
+
       - name: Run Ruff
         run: |
           uv run --frozen --no-build ruff format --check
@@ -52,15 +61,6 @@ jobs:
             --cov \
             --cov-report=term-missing \
             --cov-report=xml:coverage.xml
-
-      - name: Run prek pre-commit
-        uses: j178/prek-action@v2
-
-      - name: Run markdownlint
-        run: npm exec markdownlint-cli2 "**/*.md"
-
-      - name: Run cspell
-        run: npm exec cspell-cli --gitignore --unique --silent .
 
       # for SonarQube coverage report
       # - uses: SonarSource/sonarqube-scan-action@v8

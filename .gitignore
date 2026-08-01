@@ -1,17 +1,17 @@
-# python
+# dirs general
 __pycache__/
 .DS_Store
-.pytest_cache/
 .venv/
-*.egg-info/
-dist/
 
-# coverage reports
+# pytest
 .coverage
-htmlcov/
+.pytest_cache/
 coverage.xml
+htmlcov/
 
-# project
+# dirs
 cache/
+
+# files
 playground.py
 cspell-words-missing.txt
