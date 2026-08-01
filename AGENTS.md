@@ -9,7 +9,7 @@
 - Use f-strings for formatting, avoid `.format()` or `%`
 - If running on Windows, use Power-Shell instead of bash for external commands
 - After each code change run `uv run ruff check --fix --unsafe-fixes && uv run ruff format`
-- After each new feature run `uv run pytest && uv run pre-commit run --all-files`
+- After each new feature run `uv run pytest && prek run --all-files`
 
 ## Caveman speech
 

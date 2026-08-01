@@ -2,6 +2,7 @@
 entorb
 htmlcov
 Menke
+prek
 SonarCloud
 SonarQube
 Streamlit
