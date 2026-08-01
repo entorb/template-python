@@ -37,7 +37,7 @@ set +f
 uv run ruff format
 uv run ruff check --fix
 
-uv run pre-commit autoupdate
-uv run pre-commit run --all-files
+prek autoupdate
+prek run --all-files
 
 echo DONE

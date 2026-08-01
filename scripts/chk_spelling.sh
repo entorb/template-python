@@ -3,6 +3,7 @@
 # ensure we are in the root dir
 cd $(dirname $0)/..
 
+rm -f cspell-words-missing.txt
 npm exec cspell-cli --gitignore --unique --silent .
 if [ $? -ne 0 ]; then
     npm exec cspell-cli --gitignore --unique --words-only . > cspell-words-missing.txt

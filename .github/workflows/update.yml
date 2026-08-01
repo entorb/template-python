@@ -39,18 +39,12 @@ jobs:
           uv run ruff check --no-fix --output-format=github
           uv run ruff format --check
 
-      - name: Run pre-commit autoupdate
+      - name: Run prek pre-commit autoupdate
         run: |
-          uv run pre-commit autoupdate
+          prek autoupdate
 
-      - name: Cache pre-commit envs
-        uses: actions/cache@v6
-        with:
-          path: ~/.cache/pre-commit
-          key: pre-commit-${{ hashFiles('.pre-commit-config.yaml') }}
-
-      - name: Run pre-commit
-        run: uv run pre-commit run --all-files
+      - name: Run prek pre-commit
+        uses: j178/prek-action@v2
 
       - name: Commit changes if any
         run: |

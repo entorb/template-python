@@ -3,6 +3,6 @@
 # ensure we are in the root dir
 cd $(dirname $0)/..
 
-uv run pre-commit run --all-files
+prek run --all-files
 
 if [ $? -ne 0 ]; then exit 1; fi

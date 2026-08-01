@@ -69,23 +69,20 @@ see [check.yml](.github/workflows/check.yml)
 
 [run_checks.sh](scripts/run_checks.sh) runs all `chk_*.sh` scripts in sequence and reports failures.
 
-### Pre-commit
+### Pre-commit via prek
 
-see <https://pre-commit.com>
+see <https://prek.j178.dev/> and <https://pre-commit.com>
 
 ```sh
 # run
-uv run pre-commit run --all-files
-# or ./scripts/run_pre-commit.sh
+prek run --all-files
 
 # auto-update all hooks
-uv run pre-commit autoupdate
+prek autoupdate
 
-# to trigger pre-commit automatically at each `git commit` command
-uv run pre-commit install
+# to trigger prek automatically at each `git commit` command
+prek install
 ```
-
-see [run_pre-commit.sh](scripts/run_pre-commit.sh) and
 
 ### CSpell Code Checker
 
