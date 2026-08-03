@@ -39,6 +39,9 @@ jobs:
           uv run ruff check --no-fix --output-format=github
           uv run ruff format --check
 
+      - name: Run prek pre-commit
+        uses: j178/prek-action@v3.0.0
+
       - name: Run prek pre-commit autoupdate
         run: |
           prek autoupdate
