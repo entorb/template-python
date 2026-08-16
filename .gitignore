@@ -15,3 +15,4 @@ cache/
 # files
 playground.py
 cspell-words-missing.txt
+.cspellcache
