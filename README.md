@@ -59,7 +59,7 @@ see [chk_py_lint.sh](scripts/chk_py_lint.sh)
 
 - disable the "Automatic Analysis" at <https://sonarcloud.io/project/analysis_method?id=entorb_template-python>
 - setup SonarSource/sonarqube-scan-action@v5 in [check.yml](.github/workflows/check.yml)
-- rename [.sonarcloud.properties](.sonarcloud.properties) to [sonar-project.properties](sonar-project.properties)
+- rename `.sonarcloud.properties` to [sonar-project.properties](sonar-project.properties)
 - generate a token at <https://sonarcloud.io/account/security>
 - add this token as secret SONAR_TOKEN in GitHub
 
@@ -116,12 +116,8 @@ Ignore words per file
 
 see [chk_spelling.sh](scripts/chk_spelling.sh) and
 
-### Markdownlint
+### Markdown Link via rumdl
 
-- config in [.markdownlint-cli2.yaml](.markdownlint-cli2.yaml)
-
-```sh
-npm exec markdownlint-cli2 --fix "**/*.md"
-```
+- config in [.rumdl.toml](.rumdl.toml)
 
 see [chk_md_lint.sh](scripts/chk_md_lint.sh)
