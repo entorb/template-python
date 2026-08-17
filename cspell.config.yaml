@@ -3,24 +3,17 @@ $schema: https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell
 version: '0.2'
 useCache: true
 useGitignore: true
-
 dictionaryDefinitions:
   - name: cspell-words
     path: cspell-words.txt
     addWords: true
-
 dictionaries:
   - cspell-words
   - python
-  # - typescript
-
 language: en-US
-
 ignorePaths:
-  - '.*'
   - '.vscode'
   - 'cspell-words.txt'
   - 'cspell.config.yaml'
   - 'LICENSE'
-  - 'requirements.txt'
   - 'uv.lock'
