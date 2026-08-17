@@ -1,18 +1,14 @@
-# dirs general
-__pycache__/
+.coverage
+.cspellcache
 .DS_Store
 .venv/
-
-# pytest
-.coverage
-.pytest_cache/
-coverage.xml
-htmlcov/
-
-# dirs
+/.pytest_cache/
+/.ruff_cache/
+/.rumdl_cache/
+/.venv/
+__pycache__/
 cache/
-
-# files
-playground.py
+coverage.xml
 cspell-words-missing.txt
-.cspellcache
+htmlcov/
+playground.py
