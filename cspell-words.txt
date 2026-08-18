@@ -1,0 +1,12 @@
+entorb
+htmlcov
+Menke
+prek
+rumdl
+SonarCloud
+SonarQube
+Streamlit
+testpaths
+tomli
+Torben
+venv
