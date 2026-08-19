@@ -3,6 +3,7 @@ htmlcov
 Menke
 prek
 rumdl
+shfmt
 SonarCloud
 SonarQube
 Streamlit
