@@ -13,7 +13,7 @@ dictionaries:
 language: en-US
 ignorePaths:
   - /.vscode/
-  - cspell-words.txt
-  - cspell.config.yaml
+  - /cspell-words.txt
+  - /cspell.config.yaml
   - /LICENSE
-  - uv.lock
+  - /uv.lock
