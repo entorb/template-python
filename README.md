@@ -114,10 +114,8 @@ Ignore words per file
 - `# cspell:words myword myyword` add to file-specifiv dictionary
 - `# cspell:ignoreRegExp g{5}|h{5}`
 
-see [chk_spelling.sh](scripts/chk_spelling.sh) and
+see [chk_spelling.sh](scripts/chk_spelling.sh)
 
 ### Markdown Link via rumdl
 
 - config in [.rumdl.toml](.rumdl.toml)
-
-see [chk_md_lint.sh](scripts/chk_md_lint.sh)
