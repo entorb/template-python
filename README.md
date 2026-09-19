@@ -35,7 +35,8 @@ see [chk_py_test.sh](scripts/chk_py_test.sh) and [run_pytest_cov.sh](scripts/run
 
 - config in [ruff.toml](ruff.toml)
 - [chk_py_lint.sh](scripts/chk_py_lint.sh)
-- or `uv run ruff format` and `uv run ruff check --fix` or even `uv run ruff check --fix --unsafe-fixes`
+- or `uv run ruff format` and `uv run ruff check --fix`
+or even `uv run ruff check --fix --unsafe-fixes`
 
 To disable a certain rule
 
@@ -115,7 +116,3 @@ Ignore words per file
 - `# cspell:ignoreRegExp g{5}|h{5}`
 
 see [chk_spelling.sh](scripts/chk_spelling.sh)
-
-### Markdown Link via rumdl
-
-- config in [.rumdl.toml](.rumdl.toml)
