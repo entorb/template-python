@@ -115,4 +115,4 @@ Ignore words per file
 - `# cspell:words myword myyword` add to file-specifiv dictionary
 - `# cspell:ignoreRegExp g{5}|h{5}`
 
-see [chk_spelling.sh](scripts/chk_spelling.sh)
+see [run_spelling.sh](scripts/run_spelling.sh)
