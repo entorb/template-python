@@ -1,11 +1,8 @@
 #!/bin/sh
-
-# exit upon error
+# shellcheck disable=SC2086 # word splitting of package lists is intended
 set -e
-
-# ensure we are in the root dir
-SCRIPT_DIR="$(dirname "$0")"
-cd "$SCRIPT_DIR/.."
+cd "$(dirname "$0")/.."
+SCRIPT_DIR=scripts
 
 # # update uv
 # brew update && brew upgrade uv
