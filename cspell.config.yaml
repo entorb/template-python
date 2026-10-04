@@ -12,6 +12,7 @@ dictionaries:
   - python
 language: en-US
 ignorePaths:
+  - "/*.json"
   - /.vscode/
   - /cspell-words.txt
   - /cspell.config.yaml
