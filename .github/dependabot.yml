@@ -8,8 +8,6 @@ updates:
       interval: "weekly"
     cooldown:
       default-days: 14
-    commit-message:
-      prefix: ⬆
     labels:
       - "dependencies"
     groups:
@@ -29,7 +27,5 @@ updates:
       - dependency-name: "ruff"
     cooldown:
       default-days: 14
-    commit-message:
-      prefix: ⬆
     labels:
       - "dependencies"
