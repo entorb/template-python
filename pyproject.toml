@@ -1,13 +1,13 @@
 [project]
 name = "template-python"
 version = "0.1.0"
-description = "Add your description here"
+description = "Torben's Python template project"
 readme = "README.md"
 license = "GPL-3.0-or-later"
-requires-python = ">=3.14"
+requires-python = ">=3.14,<3.15"
 dependencies = [
-    "python-dotenv>=1.2.2",
-    "tzdata>=2026.2",
+    "python-dotenv~=1.2.2",
+    "tzdata~=2026.2",
 ]
 
 [dependency-groups]
@@ -32,6 +32,10 @@ exclude_lines = ["pragma: no cover", "if __name__ == \"__main__\":"]
 
 [tool.pyright]
 include = ["src"]
+
+[tool.uv]
+required-version = "~=0.13.4"
+exclude-newer = "7 days"
 
 [tool.vulture]
 paths = ["src"]
