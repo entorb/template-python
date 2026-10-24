@@ -50,7 +50,7 @@ repos:
       - id: rumdl-fmt
 
   - repo: https://github.com/owenlamont/ryl-pre-commit
-    rev: v0.25.1
+    rev: v0.26.0
     hooks:
       - id: ryl
         args: ["--fix", "-d", "{extends: default, rules: {line-length: disable}}"]
