@@ -3,7 +3,7 @@ name: Update
 
 on:
   schedule:
-    - cron: "51 5 * * 6"  # Every Monday morning
+    - cron: '51 5 * * 6'  # Every Monday morning
   workflow_dispatch:  # Manual trigger
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -42,7 +42,7 @@ jobs:
       - name: Run prek pre-commit
         uses: j178/prek-action@4e14d07f9231acabce116ccfca13b13dd9755ece  # v3.0.0
         with:
-          extra-args: '--all-files --quiet'
+          extra-args: --all-files --quiet
 
       - name: Run prek pre-commit autoupdate
         run: |
@@ -51,7 +51,7 @@ jobs:
       - name: Run prek pre-commit
         uses: j178/prek-action@4e14d07f9231acabce116ccfca13b13dd9755ece  # v3.0.0
         with:
-          extra-args: '--all-files --quiet'
+          extra-args: --all-files --quiet
 
       - name: Commit changes if any
         run: |
