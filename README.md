@@ -16,7 +16,7 @@ uv lock --upgrade-package pytest
 uv sync
 ```
 
-see [run_update.sh](scripts/run_update.sh)
+see [update.sh](scripts/update.sh)
 
 ## Pytest Unit Tests
 
