@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "charliermarsh.ruff",
+    "DavidAnson.vscode-markdownlint",
+    "ms-python.debugpy",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "SonarSource.sonarlint-vscode",
+    "streetsidesoftware.code-spell-checker-german",
+    "streetsidesoftware.code-spell-checker",
+    "tamasfe.even-better-toml"
+  ]
+}
