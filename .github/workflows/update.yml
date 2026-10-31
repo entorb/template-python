@@ -22,7 +22,7 @@ jobs:
         with:
           persist-credentials: true
 
-      - uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7  # v10.2.0
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e  # v10.3.2
         with:
           version-file: pyproject.toml
           enable-cache: true
@@ -41,7 +41,7 @@ jobs:
           uv run ruff format --check
 
       - name: Run prek pre-commit
-        uses: j178/prek-action@4e14d07f9231acabce116ccfca13b13dd9755ece  # v3.0.0
+        uses: j178/prek-action@44924fe9ef4a6f88253c4b6b1bf11c689d3ce53d  # v3.1.0
         with:
           extra-args: --all-files --quiet
 
@@ -50,7 +50,7 @@ jobs:
           prek autoupdate
 
       - name: Run prek pre-commit
-        uses: j178/prek-action@4e14d07f9231acabce116ccfca13b13dd9755ece  # v3.0.0
+        uses: j178/prek-action@44924fe9ef4a6f88253c4b6b1bf11c689d3ce53d  # v3.1.0
         with:
           extra-args: --all-files --quiet
 
