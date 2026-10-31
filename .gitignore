@@ -1,0 +1,14 @@
+.coverage
+.cspellcache
+.DS_Store
+.venv/
+/.pytest_cache/
+/.ruff_cache/
+/.rumdl_cache/
+/.venv/
+__pycache__/
+cache/
+coverage.xml
+cspell-words-missing.txt
+htmlcov/
+playground.py

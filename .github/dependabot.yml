@@ -1,0 +1,31 @@
+---
+version: 2
+updates:
+  # GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 14
+    labels:
+      - dependencies
+    groups:
+      github-actions:
+        patterns:
+          - '*'
+
+  # Python UV
+  - package-ecosystem: uv
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: pytest
+      - dependency-name: pytest-cov
+      - dependency-name: python-dotenv
+      - dependency-name: ruff
+    cooldown:
+      default-days: 14
+    labels:
+      - dependencies
