@@ -1,40 +1,29 @@
 #!/bin/sh
-# shellcheck disable=SC2086 # word splitting of package lists is intended
 set -e
 cd "$(dirname "$0")/.."
-SCRIPT_DIR=scripts
 
-# # update uv
-# brew update && brew upgrade uv
+echo "## Python Packages"
+# bump [project].dependencies (==) to latest; dev group is bumped by Renovate (tools-py),
+# uv upgrade cannot yet do dependency groups (astral-sh/uv#20783)
+uv upgrade
+uv sync --no-build --upgrade
 
-uv python upgrade "$(cat .python-version)"
+echo "## Code checks"
+echo "### Prek update"
+prek update --cooldown-days 7
 
-# extract versions from pyproject.toml
-GEN_OUT=$(uv run python "$SCRIPT_DIR/gen_py_packages_update.py")
-DEP_REM=$(printf '%s\n' "$GEN_OUT" | sed -n 1p)
-DEP_ADD=$(printf '%s\n' "$GEN_OUT" | sed -n 2p)
-DEV_REM=$(printf '%s\n' "$GEN_OUT" | sed -n 3p)
-DEV_ADD=$(printf '%s\n' "$GEN_OUT" | sed -n 4p)
+echo "### run_checks.sh"
+./scripts/run_checks.sh
 
-# Disables pathname expansion.
-set -f
+echo "## Git"
+if [ -n "$(git status --porcelain)" ]; then
+  echo "### git push"
+  FILES="pyproject.toml uv.lock .pre-commit-config.yaml .python-version"
+  # shellcheck disable=SC2086
+  git add $FILES
+  # shellcheck disable=SC2086
+  git diff --staged --quiet || git commit -m "chore(deps): Package update" -- $FILES
+  git push
+fi
 
-# remove unpinned
-[ -n "$DEP_REM" ] && uv remove $DEP_REM
-[ -n "$DEV_REM" ] && uv remove --dev $DEV_REM
-
-uv sync --upgrade
-
-# Re-add at latest versions
-[ -n "$DEP_ADD" ] && uv add $DEP_ADD
-[ -n "$DEV_ADD" ] && uv add --dev $DEV_ADD
-# Restore pathname expansion.
-set +f
-
-uv run ruff format
-uv run ruff check --fix
-
-prek autoupdate
-prek run --all-files
-
-echo DONE
+echo "update DONE, not yet deployed"
